@@ -1,6 +1,6 @@
 /**
  * The robot arm constructor
- *
+ * 
  * @param {HTMLCanvasElement} canvas The canvas element used for drawing the robot arm on.
  */
 var RobotArm = function (canvas) {
@@ -16,7 +16,7 @@ var RobotArm = function (canvas) {
     // The amount of rows to use
     self.rows = 8;
     // The speed of which the animations go
-    self.speed = 1000;
+    self.speed = 50;
 
     // List of animations
     local.animationList = [];
@@ -45,13 +45,13 @@ var RobotArm = function (canvas) {
     local.blocks.availableColors = ["red", "blue", "green", "white"];
     local.blocks.map = null;
     local.blocks.held = null;
-
+    
     // State variables
     local.state = {};
     // Arm
     local.state.arm = {};
     local.state.arm.position = 0;
-    // Blocks
+    // Blocks 
     local.state.blocks = {};
     local.state.blocks.map = null;
     local.state.blocks.held = null;
@@ -81,7 +81,7 @@ var RobotArm = function (canvas) {
         // Clear surface to start a new frame
         ctx.beginPath();
         ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-
+        
         // Draw the background
         ctx.fillStyle = local.settings.backgroundColor;
         ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
@@ -295,7 +295,7 @@ var RobotArm = function (canvas) {
 
     /**
      * Moves the robot arm one position to the right if possible
-     *
+     * 
      * @returns
      */
     self.moveRight = function () {
@@ -314,7 +314,7 @@ var RobotArm = function (canvas) {
     };
     /**
      * Returns the color of the held block, if any
-     * @returns {null|string} The name of the color of the block that is being held
+     * @returns {null|string} The name of the color of the block that is being held 
      */
     self.scan = function () {
         return local.state.blocks.held || null;
@@ -476,9 +476,9 @@ var RobotArm = function (canvas) {
         }
     };
 
-    self.randomLevel = function () {
-		columns = 5;
-		rows = 6;
+    self.randomLevel = function (columns, rows) {
+		columns = columns ? columns : self.columns;
+		rows = rows ? rows : self.rows;
 
 		var map = [];
 		for (var c = 0; c < columns; c++) {
